@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <TextView
+        android:id="@+id/vertretungsplan_stunde"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:outlineProvider="bounds"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:password="false"
+        android:phoneNumber="false"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <TextView
+        android:id="@+id/vertretungsplan_vertreter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:outlineProvider="bounds"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:password="false"
+        android:phoneNumber="false"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <TextView
+        android:id="@+id/vertretungsplan_fach"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:outlineProvider="bounds"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:password="false"
+        android:phoneNumber="false"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <TextView
+        android:id="@+id/vertretungsplan_raum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:outlineProvider="bounds"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:password="false"
+        android:phoneNumber="false"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <TextView
+        android:id="@+id/vertretungsplan_eigentlichesFach"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:outlineProvider="bounds"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:password="false"
+        android:phoneNumber="false"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+</LinearLayout>

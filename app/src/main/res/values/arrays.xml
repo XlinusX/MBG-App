@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="pref_class_level_list">
+        <item>Klasse 5</item>
+        <item>Klasse 6</item>
+        <item>Klasse 7</item>
+        <item>Klasse 8</item>
+        <item>Klasse 9</item>
+        <item>Klasse 10</item>
+        <item>Jahrgangsstufe 1</item>
+        <item>Jahrgangsstufe 2</item>
+    </array>
+    <array name="pref_class_letter_list">
+        <item>a</item>
+        <item>b</item>
+        <item>c</item>
+        <item>d</item>
+        <item>e</item>
+    </array>
+
+
+</resources>

@@ -1,0 +1,183 @@
+<resources>
+    <string name="app_name">MBG-App</string>
+
+    <string name="navigation_drawer_open">Navigation öffnen</string>
+    <string name="navigation_drawer_close">Navigation schließen</string>
+
+    <string name="login_first">Du musst dich anmelden, um diese \n App nutzen zu können</string>
+    <string name="login_failed">Falsche Anmeldedaten!</string>
+
+    <string name="action_settings">Einstellungen</string>
+    <string name="title_activity_settings">Einstellungen</string>
+
+    <string name="shared_pref_filename">MBGPref</string>
+
+    <string name="encryptedUsername">c2NodWVsZXI=</string>
+    <string name="encryptedPassword">bWF4MDEwNWJvcm4=</string>
+
+    <string-array name="selector_fach">
+        <item>Mathe</item>
+        <item>Englisch</item>
+        <item>Deutsch</item>
+        <item>Physik</item>
+        <item>Chemie</item>
+        <item>Biologie</item>
+        <item>NWT</item>
+        <item>BNT</item>
+        <item>Geschichte</item>
+        <item>Erdkunde</item>
+        <item>Gemeinschaftskunde</item>
+        <item>Wirtschaft</item>
+        <item>Französisch</item>
+        <item>Italienisch</item>
+        <item>Latein</item>
+        <item>Religion</item>
+        <item>Ethik</item>
+        <item>Psychologie</item>
+        <item>Philosophie</item>
+        <item>Informatik</item>
+        <item>Astronomie</item>
+        <item>Darstellende Geometrie</item>
+        <item>Literatur und Theater</item>
+        <item>VMa</item>
+        <item>Sport</item>
+        <item>Bildende Kunst</item>
+        <item>Musik</item>
+    </string-array>
+
+    <string-array name="selector_raum">
+        <item>U1</item>
+        <item>U2</item>
+        <item>U6</item>
+
+        <item>102</item>
+        <item>104</item>
+        <item>105</item>
+        <item>106</item>
+        <item>107</item>
+        <item>Musiksaal</item>
+        <item>116</item>
+        <item>118</item>
+
+        <item>201</item>
+        <item>202</item>
+        <item>205</item>
+        <item>206</item>
+        <item>207</item>
+        <item>208</item>
+        <item>209</item>
+        <item>210</item>
+        <item>212</item>
+        <item>213</item>
+        <item>214</item>
+        <item>215</item>
+
+        <item>201</item>
+        <item>302</item>
+        <item>305</item>
+        <item>306</item>
+        <item>307</item>
+        <item>308</item>
+        <item>309</item>
+        <item>310</item>
+        <item>312</item>
+        <item>313</item>
+        <item>314</item>
+        <item>315</item>
+
+        <item>P1</item>
+        <item>P2</item>
+        <item>P3</item>
+        <item>P4</item>
+        <item>P5</item>
+        <item>P7</item>
+        <item>P8</item>
+        <item>P9</item>
+        <item>P10</item>
+        <item>P11</item>
+        <item>P12</item>
+        <item>P14</item>
+        <item>P15</item>
+
+        <item>N1</item>
+        <item>N2</item>
+        <item>S1</item>
+        <item>S2</item>
+    </string-array>
+
+    <string-array name="selector_lehrkraft">
+        <item>Fr. Conrad</item>
+        <item>Hr. Bauer</item>
+        <item>Fr. Bäuerle</item>
+        <item>Fr. Bebon</item>
+        <item>Fr. Bolz</item>
+        <item>Fr. von Bötticher</item>
+        <item>Fr. Dahme</item>
+        <item>Hr. Damen</item>
+        <item>Hr. Dietze</item>
+        <item>Hr. Dobler</item>
+        <item>Fr. Essig</item>
+        <item>Fr. Farrenkopf</item>
+        <item>Fr. Frey</item>
+        <item>Hr. Gehrig</item>
+        <item>Hr. Graser</item>
+        <item>Hr. Gröger</item>
+        <item>Fr. Grösch</item>
+        <item>Fr. Hacker</item>
+        <item>Fr. Haug</item>
+        <item>Hr. Henrich</item>
+        <item>Fr. Heim</item>
+        <item>Fr. Hübner</item>
+        <item>Fr. Jautelat</item>
+        <item>Fr. Jaworek</item>
+        <item>Hr. Jersak</item>
+        <item>Fr. Kanzler</item>
+        <item>Hr. Klingelhöfer</item>
+        <item>Fr. Knatz</item>
+        <item>Hr. Krebs</item>
+        <item>Hr. Kurka</item>
+        <item>Hr. Lindner</item>
+        <item>Hr. Lischerong</item>
+        <item>Hr. Marx</item>
+        <item>Fr. Maurer</item>
+        <item>Fr. van der Meer</item>
+        <item>Hr. Müller(Mll)</item>
+        <item>Hr. Müller(Mlr)</item>
+        <item>Fr. Musterle</item>
+        <item>Hr. Musterle</item>
+        <item>Hr. Nesper</item>
+        <item>Fr. Nuding-Rieger</item>
+        <item>Hr. Ohrt</item>
+        <item>Fr. Piszczek-Günther</item>
+        <item>Fr. Rehr</item>
+        <item>Fr. Reiß</item>
+        <item>Fr. Rietgraf</item>
+        <item>Fr. Rietgraf</item>
+        <item>Hr. Sanchez</item>
+        <item>Hr. Sattel</item>
+        <item>Hr. Schildknecht</item>
+        <item>Hr. Schindele</item>
+        <item>Fr. Schneyer</item>
+        <item>Fr. Schweigert-Ballheimmer</item>
+        <item>Fr. Soukup</item>
+        <item>Fr. Tränkle</item>
+        <item>Fr. Tsiakiridou</item>
+        <item>Fr. Tronche</item>
+        <item>Hr. Uhlmann</item>
+        <item>Hr. Wagner</item>
+        <item>Hr. Walter</item>
+        <item>Hr. Weber</item>
+        <item>Fr. Weiß</item>
+        <item>Hr. Winkelmann</item>
+        <item>Fr. Ziesik</item>
+    </string-array>
+
+    <!-- Strings related to Settings -->
+
+    <string name="pref_class_title">Klasse</string>
+
+    <string name="pref_notifications_title">Benachrichtigungen</string>
+
+    <string name="pref_logout_title">Automatisch anmelden</string>
+    <string name="title_activity_show_more_info">ShowMoreInfoActivity</string>
+</resources>

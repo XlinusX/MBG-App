@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_start"
+            android:title="Start" />
+        <item
+            android:id="@+id/nav_termine"
+            android:title="Termine" />
+        <item
+            android:id="@+id/nav_vertretungsplan"
+            android:title="Vertretungsplan" />
+        <item
+            android:id="@+id/nav_stundenplan"
+            android:title="Mein Stundenplan" />
+        <item
+            android:id="@+id/nav_klausurenplan"
+            android:title="Klausurenpläne" />
+    </group>
+
+</menu>

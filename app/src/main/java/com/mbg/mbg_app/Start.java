@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.util.Log;
@@ -16,12 +15,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.ProgressBar;
-
-/**
- * Created by Linus on 08.04.2017.
- */
-
 
 public class Start extends Fragment {
 
@@ -32,8 +25,6 @@ public class Start extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.layout_start, container, false);
-
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(view.getContext());
 
         ListView list = (ListView) view.findViewById(R.id.list_start);
 

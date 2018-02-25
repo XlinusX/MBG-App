@@ -14,7 +14,6 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.Toast;
 
 
 /**
@@ -53,7 +52,7 @@ public class SettingsActivity extends AppCompatActivity {
                                 : null);
             }
 
-            Preference pref_letter = preference.getPreferenceManager().findPreference("pref_class_letter");
+            ListPreference pref_letter = (ListPreference)preference.getPreferenceManager().findPreference("pref_class_letter");
 
             if (preference == preference.getPreferenceManager().findPreference("pref_class_level")) {
                 Log.d("linus", "onPreferenceChange: " + stringValue);
@@ -63,6 +62,7 @@ public class SettingsActivity extends AppCompatActivity {
                     pref_letter.setSummary("");
                 } else {
                     pref_letter.setEnabled(true);
+                    pref_letter.setSummary(pref_letter.getValue());
                 }
             }
 

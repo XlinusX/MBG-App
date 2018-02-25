@@ -15,18 +15,11 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TabHost;
 
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static java.lang.Integer.parseInt;
-
-/**
- * Created by Linus on 08.04.2017.
- */
 
 public class Stundenplan extends Fragment {
 

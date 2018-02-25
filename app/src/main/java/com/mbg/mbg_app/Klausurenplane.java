@@ -26,11 +26,6 @@ import org.joda.time.Duration;
 
 import java.io.File;
 
-/**
- * Created by Linus on 08.04.2017.
- */
-
-
 public class Klausurenplane extends Fragment {
 
 

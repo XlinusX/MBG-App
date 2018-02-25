@@ -42,10 +42,6 @@ import java.util.regex.Pattern;
 import static android.content.ContentValues.TAG;
 import static java.lang.Integer.parseInt;
 
-/**
- * Created by Linus on 08.04.2017.
- */
-
 public class Termine extends Fragment {
 
     private static Document site;
@@ -249,16 +245,20 @@ public class Termine extends Fragment {
                 String com5 = "tftt"; //z.B. 9:45
 
 
-                String dataArr = "";
+                String dataArr;
                 int timeIndex;
+
+                StringBuilder dataArrBuilder = new StringBuilder();
 
                 for (int i = 0; i < data.length(); i++) {
                     if (Character.isDigit(data.toCharArray()[i])) {
-                        dataArr += "t";
+                        dataArrBuilder.append("t");
                     }else if(!(Character.isSpaceChar(data.toCharArray()[i]))){
-                        dataArr += "f";
+                        dataArrBuilder.append("f");
                     }
                 }
+                dataArr = dataArrBuilder.toString();
+
                 if(dataArr.contains(com1)) {
                     timeIndex = dataArr.indexOf(com1);
                     String spaceless = data.replace(" ", "");

@@ -41,11 +41,6 @@ import java.util.Map;
 
 import static android.content.ContentValues.TAG;
 
-
-/**
- * Created by Linus on 08.04.2017.
- */
-
 public class Vertretungsplan extends Fragment {
 
     private static Document site001, site002, currentSite;
@@ -84,8 +79,13 @@ public class Vertretungsplan extends Fragment {
 
             final DateTime now = DateTime.now();
             DateTime timestamp = new DateTime(pref.getLong("vertretungsplan", 0));
+            Log.e(TAG, timestamp.toString());
 
             Duration dur = new Duration(new DateTime(0), new DateTime(1990, 1, 1, 0, 0));
+
+            if(now.getHourOfDay() < 14){
+                edit.putBoolean("downloadesAfter14",false).apply();
+            }
 
             if (timestamp.getMillis() != 0) {
                 dur = new Duration(timestamp, now);
@@ -98,10 +98,11 @@ public class Vertretungsplan extends Fragment {
                 }else {
                     Toast.makeText(this.getActivity(), "Vertetungsplan konnte nicht aktualisiert werden! \n Bitte prüfe deine Internetverbindung!", Toast.LENGTH_LONG).show();
                 }
-            } else if(now.getHourOfDay() >= 14 && (now.getDayOfYear() >= timestamp.getDayOfYear() || now.getYear() >= timestamp.getYear())){
+            } else if((now.getHourOfDay() >= 14 && (now.getDayOfYear() > timestamp.getDayOfYear() || now.getYear() >= timestamp.getYear())) && !pref.getBoolean("downloadesAfter14",false)){
                 if(networkInfo != null && networkInfo.isConnected()) {
                     requestedFile1.delete();
                     requestedFile2.delete();
+                    edit.putBoolean("downloadesAfter14",true);
                 }else {
                     Toast.makeText(this.getActivity(), "Vertetungsplan konnte nicht aktualisiert werden! \n Bitte prüfe deine Internetverbindung!", Toast.LENGTH_LONG).show();
                 }
@@ -171,6 +172,8 @@ public class Vertretungsplan extends Fragment {
 
     public void showVertretungsplan(final Document site001, final Document site002) {
 
+        final SharedPreferences mbgPref = getActivity().getSharedPreferences("MBGPref", Context.MODE_PRIVATE);
+
         host.setup();
 
         String[] day1 = site001.getElementsByClass("mon_title").first().html().split(" ");
@@ -203,11 +206,36 @@ public class Vertretungsplan extends Fragment {
 
                 final Elements tableRows = currentSite.getElementsByClass("mon_list").first().child(0).children();
 
-                for (Element item : tableRows) {
-                    if (item.children().size() != 1) {
-                        vertretungsplan.add(new String[]{item.child(1).html(), item.child(2).html(), item.child(3).html(), item.child(4).html(), item.child(5).html()});
+                String selectedClass;
+                boolean isInBetween = false;
+
+                vertretungsplan.add(new String[]{"Stunde","Vertreter", "Fach", "Raum", "(Fach)"});
+
+                final List<Integer> possiblePositions = new ArrayList<>();
+
+                for (int i = 0;i<tableRows.size();i++) {
+
+                    Element item = tableRows.get(i);
+
+                    if (item.children().size() == 1) {
+                        if (item.child(0).html().equals("Jahrgangsstufe 1") || item.child(0).html().equals("Jahrgangsstufe 2")) {
+                            selectedClass = mbgPref.getString("selected_class_level",null);
+                        } else {
+                            selectedClass = mbgPref.getString("selected_class_level",null) + mbgPref.getString("selected_class_letter",null);
+                        }
+
+                        if(item.child(0).html().equals(selectedClass)){
+                            isInBetween = true;
+                            vertretungsplan.add(new String[]{item.child(0).html(), "", "", "", ""});
+                        }else {
+                            isInBetween = false;
+                        }
+
                     } else {
-                        vertretungsplan.add(new String[]{item.child(0).html(), "", "", "", ""});
+                        if(isInBetween) {
+                            possiblePositions.add(i);
+                            vertretungsplan.add(new String[]{item.child(1).html(), item.child(2).html(), item.child(3).html(), item.child(4).html(), item.child(5).html()});
+                        }
                     }
                 }
 
@@ -240,15 +268,17 @@ public class Vertretungsplan extends Fragment {
                             SharedPreferences vert = getActivity().getSharedPreferences("Vert", Context.MODE_PRIVATE);
                             SharedPreferences.Editor edit = vert.edit();
 
-                            edit.putString("stunde", tableRows.get(position).child(1).html()).apply();
-                            edit.putString("vertreter", tableRows.get(position).child(2).html()).apply();
-                            edit.putString("fach", tableRows.get(position).child(3).html()).apply();
-                            edit.putString("raum", tableRows.get(position).child(4).html()).apply();
-                            edit.putString("eigentlichesFach", tableRows.get(position).child(5).html()).apply();
+                            int realPosition = (position-2)+possiblePositions.get(0);
 
-                            edit.putString("art", tableRows.get(position).child(6).html()).apply();
-                            edit.putString("bemerkungen", tableRows.get(position).child(7).html()).apply();
-                            edit.putString("verlegtVon", tableRows.get(position).child(8).html()).apply();
+                            edit.putString("stunde", tableRows.get(realPosition).child(1).html()).apply();
+                            edit.putString("vertreter", tableRows.get(realPosition).child(2).html()).apply();
+                            edit.putString("fach", tableRows.get(realPosition).child(3).html()).apply();
+                            edit.putString("raum", tableRows.get(realPosition).child(4).html()).apply();
+                            edit.putString("eigentlichesFach", tableRows.get(realPosition).child(5).html()).apply();
+
+                            edit.putString("art", tableRows.get(realPosition).child(6).html().replace("&nbsp;","-")).apply();
+                            edit.putString("bemerkungen", tableRows.get(realPosition).child(7).html().replace("&nbsp;","-")).apply();
+                            edit.putString("verlegtVon", tableRows.get(realPosition).child(8).html().replace("&nbsp;","-")).apply();
 
                             Intent intent = new Intent(view.getContext(), ShowMoreInfoActivity.class);
                             startActivity(intent);

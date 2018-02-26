@@ -73,7 +73,7 @@ public class Klausurenplane extends Fragment {
 
                 File requestedFile = new File(view.getContext().getFilesDir(), "klausurenplan_" + halbjahr + ".pdf");
 
-                DateTime now = DateTime.now();
+                final DateTime now = DateTime.now();
                 final DateTime timestamp = new DateTime(pref.getLong("klausurenplan_" + halbjahr, 0));
 
                 ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -107,7 +107,7 @@ public class Klausurenplane extends Fragment {
                                     result.setExecutable(true, false);
                                     result.setReadable(true, false);
 
-                                    edit.putLong("klausurenplan_" + finalHalbjahr,timestamp.getMillis()).apply();
+                                    edit.putLong("klausurenplan_" + finalHalbjahr,now.getMillis()).apply();
 
                                     showKlausrenplan(result);
                                 }

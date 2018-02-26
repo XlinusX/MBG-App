@@ -19,7 +19,6 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
 import android.widget.TabHost;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.koushikdutta.async.future.FutureCallback;
@@ -83,26 +82,14 @@ public class Vertretungsplan extends Fragment {
 
             Duration dur = new Duration(new DateTime(0), new DateTime(1990, 1, 1, 0, 0));
 
-            if(now.getHourOfDay() < 14){
-                edit.putBoolean("downloadesAfter14",false).apply();
-            }
-
             if (timestamp.getMillis() != 0) {
                 dur = new Duration(timestamp, now);
             }
 
-            if (dur.toStandardHours().getHours() >= 2) {
+            if (dur.toStandardHours().getHours() >= 1) {
                 if(networkInfo != null && networkInfo.isConnected()) {
                     requestedFile1.delete();
                     requestedFile2.delete();
-                }else {
-                    Toast.makeText(this.getActivity(), "Vertetungsplan konnte nicht aktualisiert werden! \n Bitte prüfe deine Internetverbindung!", Toast.LENGTH_LONG).show();
-                }
-            } else if((now.getHourOfDay() >= 14 && (now.getDayOfYear() > timestamp.getDayOfYear() || now.getYear() >= timestamp.getYear())) && !pref.getBoolean("downloadesAfter14",false)){
-                if(networkInfo != null && networkInfo.isConnected()) {
-                    requestedFile1.delete();
-                    requestedFile2.delete();
-                    edit.putBoolean("downloadesAfter14",true);
                 }else {
                     Toast.makeText(this.getActivity(), "Vertetungsplan konnte nicht aktualisiert werden! \n Bitte prüfe deine Internetverbindung!", Toast.LENGTH_LONG).show();
                 }
@@ -137,6 +124,8 @@ public class Vertretungsplan extends Fragment {
                                                     Log.e(TAG, "onCompleted: parsing..." );
                                                 } catch (IOException ex) {
                                                     ex.printStackTrace();
+                                                    Toast.makeText(getActivity(), "Vertetungsplan konnte nicht aktualisiert werden! \n Bitte prüfe deine Internetverbindung!", Toast.LENGTH_LONG).show();
+                                                    return;
                                                 }
                                                 edit.putLong("vertretungsplan", now.getMillis()).apply();
                                                 showVertretungsplan(site001,site002);
@@ -150,6 +139,8 @@ public class Vertretungsplan extends Fragment {
                                     Log.e(TAG, "onCompleted: parsing..." );
                                 } catch (IOException ex) {
                                     ex.printStackTrace();
+                                    Toast.makeText(getActivity(), "Vertetungsplan konnte nicht aktualisiert werden! \n Bitte prüfe deine Internetverbindung!", Toast.LENGTH_LONG).show();
+                                    return;
                                 }
                             }
                         });
@@ -160,6 +151,8 @@ public class Vertretungsplan extends Fragment {
                     Log.e(TAG, "onCompleted: parsing..." );
                 } catch (IOException e1) {
                     e1.printStackTrace();
+                    Toast.makeText(this.getActivity(), "Vertetungsplan konnte nicht aktualisiert werden! \n Bitte prüfe deine Internetverbindung!", Toast.LENGTH_LONG).show();
+                    return;
                 }
                 showVertretungsplan(site001,site002);
             }
@@ -224,12 +217,7 @@ public class Vertretungsplan extends Fragment {
                             selectedClass = mbgPref.getString("selected_class_level",null) + mbgPref.getString("selected_class_letter",null);
                         }
 
-                        if(item.child(0).html().equals(selectedClass)){
-                            isInBetween = true;
-                            vertretungsplan.add(new String[]{item.child(0).html(), "", "", "", ""});
-                        }else {
-                            isInBetween = false;
-                        }
+                        isInBetween = item.child(0).html().equals(selectedClass);
 
                     } else {
                         if(isInBetween) {
@@ -263,12 +251,12 @@ public class Vertretungsplan extends Fragment {
                 list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        if (!(((TextView) view.findViewById(R.id.vertretungsplan_raum)).getText().toString().equals("") || (((TextView) view.findViewById(R.id.vertretungsplan_raum)).getText().toString().equals("Raum")))) {
+                        if (position != 0) {
 
                             SharedPreferences vert = getActivity().getSharedPreferences("Vert", Context.MODE_PRIVATE);
                             SharedPreferences.Editor edit = vert.edit();
 
-                            int realPosition = (position-2)+possiblePositions.get(0);
+                            int realPosition = position-1+possiblePositions.get(0);
 
                             edit.putString("stunde", tableRows.get(realPosition).child(1).html()).apply();
                             edit.putString("vertreter", tableRows.get(realPosition).child(2).html()).apply();

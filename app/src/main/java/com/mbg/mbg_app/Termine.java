@@ -114,6 +114,7 @@ public class Termine extends Fragment {
                                     Log.e(TAG, "onCompleted: parsing..." );
                                 } catch (IOException e1) {
                                     e1.printStackTrace();
+                                    return;
                                 }
                                 edit.putLong("termine", now.getMillis()).apply();
                                 parseStuff(site);
@@ -127,6 +128,7 @@ public class Termine extends Fragment {
                     Log.e(TAG, "onCompleted: parsing..." );
                 } catch (IOException e1) {
                     e1.printStackTrace();
+                    return;
                 }
                 parseStuff(site);
             }
@@ -146,7 +148,7 @@ public class Termine extends Fragment {
             table = site.body().getElementsByClass("ohne_rahmen")
                     .first().getElementsByTag("tbody").first().getElementsByTag("tr");
         }catch (Exception e){
-
+            e.printStackTrace();
             return;
         }
 

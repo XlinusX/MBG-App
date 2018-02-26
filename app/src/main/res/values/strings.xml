@@ -101,8 +101,10 @@
 
         <item>N1</item>
         <item>N2</item>
+        <item>N3</item>
         <item>S1</item>
         <item>S2</item>
+        <item>S3</item>
     </string-array>
 
     <string-array name="selector_lehrkraft">
@@ -170,6 +172,20 @@
         <item>Fr. Weiß</item>
         <item>Hr. Winkelmann</item>
         <item>Fr. Ziesik</item>
+    </string-array>
+
+    <string-array name="untrrichtszeiten">
+        <item>7:45 – 8:30</item>
+        <item>8:35 – 9:20</item>
+        <item>9:40 – 10:25</item>
+        <item>10:25 – 11:10</item>
+        <item>11:20 – 12:05</item>
+        <item>12:05 – 12:50</item>
+        <item>13:20 – 14:05</item>
+        <item>14:05 – 14:50</item>
+        <item>14:50 – 15:35</item>
+        <item>15:40 – 16:25</item>
+        <item>16:25 – 17:10</item>
     </string-array>
 
     <!-- Strings related to Settings -->

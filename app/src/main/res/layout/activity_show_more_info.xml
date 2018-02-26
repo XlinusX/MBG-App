@@ -74,12 +74,12 @@
         android:id="@+id/more_info_static_text_bemerkungen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:text="Bemerkungen"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/more_info_static_text_art" />
+        app:layout_constraintTop_toBottomOf="@+id/more_info_static_text_verlegtVon" />
 
     <TextView
         android:id="@+id/more_info_static_text_verlegtVon"
@@ -90,7 +90,7 @@
         android:text="verlegt von"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/more_info_static_text_bemerkungen" />
+        app:layout_constraintTop_toBottomOf="@+id/more_info_static_text_art" />
 
     <TextView
         android:id="@+id/more_info_dynamic_text_art"
@@ -112,7 +112,7 @@
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/more_info_dynamic_text_art" />
+        app:layout_constraintTop_toBottomOf="@+id/more_info_dynamic_text_verlegtVon" />
 
     <TextView
         android:id="@+id/more_info_dynamic_text_verlegtVon"
@@ -123,6 +123,6 @@
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/more_info_dynamic_text_bemerkungen" />
+        app:layout_constraintTop_toBottomOf="@+id/more_info_dynamic_text_art" />
 
 </android.support.constraint.ConstraintLayout>

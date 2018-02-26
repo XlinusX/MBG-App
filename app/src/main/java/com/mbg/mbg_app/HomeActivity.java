@@ -32,6 +32,7 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
         SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.shared_pref_filename), Context.MODE_PRIVATE);
         SharedPreferences plan = this.getSharedPreferences("Plan", Context.MODE_PRIVATE);
@@ -59,7 +60,6 @@ public class HomeActivity extends AppCompatActivity
             this.setTitle("Klausurenpläne");
         }
 
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

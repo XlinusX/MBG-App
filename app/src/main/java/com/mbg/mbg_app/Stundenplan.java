@@ -61,9 +61,11 @@ public class Stundenplan extends Fragment {
 
                 for(int i = 0; i<11;i++){
 
+                    String[] unterrichtszeiten = getResources().getStringArray(R.array.untrrichtszeiten);
+
                     prefPrefix = host.getCurrentTabTag()+"_"+(i+1)+"_";
 
-                    stunden.add(new String[]{(i+1+". Stunde"),
+                    stunden.add(new String[]{(i+1+". Stunde\n(" + unterrichtszeiten[i] + ")"),
                             plan.getString(prefPrefix+"fach",""),
                             plan.getString(prefPrefix+"raum",""),
                             plan.getString(prefPrefix+"lehrkraft","")});

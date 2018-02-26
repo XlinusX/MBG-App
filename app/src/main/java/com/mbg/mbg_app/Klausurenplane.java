@@ -8,7 +8,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,7 +73,9 @@ public class Klausurenplane extends Fragment {
                         break;
                 }
 
-                File requestedFile = new File(view.getContext().getFilesDir(), "klausurenplan_" + halbjahr + ".pdf");
+                File requestedFile = new File(view.getContext().getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "klausurenplan_" + halbjahr + ".pdf");
+
+                final Uri uri = FileProvider.getUriForFile(view.getContext(), view.getContext().getApplicationContext().getPackageName() + ".my.package.name.provider", requestedFile);
 
                 final DateTime now = DateTime.now();
                 final DateTime timestamp = new DateTime(pref.getLong("klausurenplan_" + halbjahr, 0));
@@ -109,11 +113,11 @@ public class Klausurenplane extends Fragment {
 
                                     edit.putLong("klausurenplan_" + finalHalbjahr,now.getMillis()).apply();
 
-                                    showKlausrenplan(result);
+                                    showKlausrenplan(result, uri);
                                 }
                             });
                 }else{
-                    showKlausrenplan(requestedFile);
+                    showKlausrenplan(requestedFile, uri);
                 }
             }
         });
@@ -122,10 +126,11 @@ public class Klausurenplane extends Fragment {
 
     }
 
-    private void showKlausrenplan(File klausurenplan) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.fromFile(klausurenplan), "application/pdf");
+    private void showKlausrenplan(File klausurenplan, Uri uri) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        intent.setDataAndType(uri, "application/pdf");
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         startActivity(intent);
     }
 }
